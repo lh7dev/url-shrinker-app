@@ -1,0 +1,22 @@
+.navigation-wrapper {
+  float: right;
+}
+
+ul {
+  display: flex;
+  list-style-type: none;
+  > li {
+    margin: 0 8px;
+  }
+
+  > li > a {
+    text-decoration: none;
+    color: rgb(194, 198, 216);
+    transition: 0.3s;
+  }
+
+  > li > a:hover,
+  > li > a.active {
+    color: white;
+  }
+}
