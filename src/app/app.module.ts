@@ -9,6 +9,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 
 // App
 import { AppRoutingModule } from './app-routing.module';
@@ -35,7 +38,9 @@ import { ResolveShortUrlComponent } from './components/resolve-short-url/resolve
     MatButtonModule,
     MatInputModule,
     MatPaginatorModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatCardModule,
+    MatProgressSpinnerModule
   ],
   providers: [UrlShrinkerService],
   bootstrap: [AppComponent],

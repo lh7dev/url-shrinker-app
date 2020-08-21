@@ -18,7 +18,7 @@ export class ListViewComponent implements OnInit {
   pageSizeOptions = [25, 100, 500, 1000, 5000];
   pageEvent: PageEvent;
 
-  loading = true;
+  loading = false;
 
   baseUrl;
 
@@ -27,6 +27,7 @@ export class ListViewComponent implements OnInit {
   constructor(private srv: UrlShrinkerService) {}
 
   ngOnInit(): void {
+    this.loading = true;
     this.refreshList();
     this.baseUrl = this.srv.baseUrl;
   }
@@ -43,11 +44,12 @@ export class ListViewComponent implements OnInit {
       console.log(result);
       if (result.success) {
         this.dataSource = new MatTableDataSource<UrlRelationship[]>(result.data);
-        this.loading = false;
         this.initPaginators();
+        this.loading = false;
       } else {
         console.log('refresh list failed');
         console.log(result);
+        this.loading = false;
       }
     });
   }
@@ -56,7 +58,6 @@ export class ListViewComponent implements OnInit {
     this.paginator.pageSize = this.pageSize;
     this.paginator.pageIndex = this.pageIndex;
     this.dataSource.paginator = this.paginator;
-    this.loading = false;
   }
 
   onSearchChaged(searchArg: string) {

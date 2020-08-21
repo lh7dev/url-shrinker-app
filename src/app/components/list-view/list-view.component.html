@@ -18,7 +18,7 @@
 
   <ng-container matColumnDef="shortUrl">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Short URLs</th>
-    <td mat-cell *matCellDef="let element">
+    <td mat-cell *matCellDef="let element" class="data-container">
       <a [href]="baseUrl + '/' + element.shortUrl" target="_blank">{{
         baseUrl+'/'+element.shortUrl
       }}</a>
@@ -27,7 +27,7 @@
 
   <ng-container matColumnDef="originalUrl">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Original URLs</th>
-    <td mat-cell *matCellDef="let element">
+    <td mat-cell *matCellDef="let element" class="data-container">
       <a [href]="element.originalUrl" target="_blank"
         >{{ element.originalUrl }}
       </a>
@@ -44,3 +44,7 @@
   [pageSize]="pageSize"
   [pageSizeOptions]="pageSizeOptions"
 ></mat-paginator>
+
+<div class="loading-spinner" *ngIf="loading">
+  <mat-progress-spinner></mat-progress-spinner>
+</div>

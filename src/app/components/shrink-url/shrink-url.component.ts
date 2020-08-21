@@ -13,6 +13,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class ShrinkUrlComponent implements OnInit {
   form: FormGroup;
 
+  loading = false;
+
   generatedResult: UrlRelationship | null;
   baseUrl;
 
@@ -23,9 +25,11 @@ export class ShrinkUrlComponent implements OnInit {
       url: [
         '',
         [
-          Validators.required
+          Validators.required,
+          Validators.pattern("^(https|ftp|http|ftps):\\/\\/([a-z\\d_]+\\.)?(([a-zA-Z\\d_]+)(\\.[a-zA-Z]{2,6}))(\\/[a-zA-Z\\d_\\%\\-=\\+]+)*(\\?)?([a-zA-Z\\d=_\\+\\%\\-&\\{\\}\\:]+)?")
         ],
       ],
+      // ^(https|ftp|http|ftps):\/\/([a-z\d_]+\.)?(([a-zA-Z\d_]+)(\.[a-zA-Z]{2,6}))(\/[a-zA-Z\d_\%\-=\+]+)*(\?)?([a-zA-Z\d=_\+\%\-&\{\}\:]+)?
       totalValidDays: [365]
     });
 
@@ -33,16 +37,18 @@ export class ShrinkUrlComponent implements OnInit {
   }
 
   submitForm() {
-    console.log('trace submit');
-    console.log(this.form.valid);
+    this.loading = true;
+    console.log("is form valid: "+ this.form.valid);
     if (this.form.valid) {
       this.srv.shrinkUrl(this.form.value).subscribe((result) => {
         if (result.success) {
           console.log("success!!");
           this.form.reset();
           this.generatedResult = result.data;
+          this.loading = false
         } else {
           console.log('error generating short url');
+          this.loading = false;
         }
       });
     }

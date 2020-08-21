@@ -1,7 +1,7 @@
 <div class="component">
   <div class="form-container">
     <form (ngSubmit)="submitForm()" [formGroup]="form" >
-      <mat-form-field>
+      <mat-form-field class="full-width">
         <input
           matInput
           type="text"
@@ -14,8 +14,26 @@
     </form>
   </div>
   <div class="result-container" *ngIf="generatedResult">
-    <span>original url: </span> <a [href]="generatedResult.originalUrl" target="_blank">{{generatedResult.originalUrl}}</a>
-    <br>
-    <span>shronk url: </span> <a [href]="baseUrl + '/' + generatedResult.shortUrl">{{baseUrl+"/"+generatedResult.shortUrl}}</a>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Result</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="result-link">
+          <label for="originalUrl">Original URL:</label><br>
+          <a #originalUrl [href]="generatedResult.originalUrl" target="_blank">{{generatedResult.originalUrl}}</a>
+        </div>
+        <br>
+        <div class="result-link">
+          <mat-label>Short URL:</mat-label><br>
+          <a #shortUrl [href]="baseUrl + '/' + generatedResult.shortUrl" target="_blank">{{baseUrl+"/"+generatedResult.shortUrl}}</a>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
   </div>
+</div>
+
+<div class="loading-spinner" *ngIf="loading">
+  <mat-progress-spinner></mat-progress-spinner>
 </div>
