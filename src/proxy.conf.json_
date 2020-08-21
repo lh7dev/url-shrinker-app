@@ -1,12 +1,11 @@
 {
   "/backend": {
-    "target": "https://us-central1-url-shrinker-d285a.cloudfunctions.net/api",
-    "secure": true,
+    "target": "http://localhost:4000",
+    "secure": false,
     "logLevel": "debug",
     "pathRewrite": {
       "^/backend": ""
     },
     "changeOrigin": true
   }
-
 }

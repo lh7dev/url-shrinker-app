@@ -5,6 +5,12 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:4200/backend',
+  baseUrl: 'https://surl.mambicoder.com',
+  endpoints: {
+    list: '/url_shortener',
+    shrink: '/url_shortener/shrink_url',
+    srhinkNavigate: '/',
+  }
 };
 
 /*

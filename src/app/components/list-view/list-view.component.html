@@ -20,7 +20,7 @@
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Short URLs</th>
     <td mat-cell *matCellDef="let element">
       <a [href]="baseUrl + '/' + element.shortUrl" target="_blank">{{
-        element.shortUrl
+        baseUrl+'/'+element.shortUrl
       }}</a>
     </td>
   </ng-container>

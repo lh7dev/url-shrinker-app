@@ -7,23 +7,24 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class UrlShrinkerService {
-  private BASE_URL = environment.apiUrl;
-  private ENDPOINTS = endpoints;
+  private API_URL = environment.apiUrl;
+  private ENDPOINTS = environment.endpoints;
+  private BASE_URL = environment.baseUrl;
 
   constructor(private http: HttpClient) {}
 
   getList(): Observable<ServerResponse> {
-    const url = this.BASE_URL + this.ENDPOINTS.list;
+    const url = this.API_URL + this.ENDPOINTS.list;
     return this.http.get<ServerResponse>(url);
   }
 
   shrinkUrl(originalUrl: string): Observable<ServerResponse> {
-    const url = this.BASE_URL + this.ENDPOINTS.shrink;
+    const url = this.API_URL + this.ENDPOINTS.shrink;
     return this.http.post<ServerResponse>(url, originalUrl);
   }
 
   navigate(shortUrl): void {
-    const url = `${this.BASE_URL}/${shortUrl}`;
+    const url = `${this.API_URL}/${shortUrl}`;
     this.http.get<ServerResponse>(url);
   }
 

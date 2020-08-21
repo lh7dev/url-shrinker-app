@@ -16,6 +16,6 @@
   <div class="result-container" *ngIf="generatedResult">
     <span>original url: </span> <a [href]="generatedResult.originalUrl" target="_blank">{{generatedResult.originalUrl}}</a>
     <br>
-    <span>shronk url: </span> <a [href]="generatedResult.shortUrl">{{generatedResult.shortUrl}}</a>
+    <span>shronk url: </span> <a [href]="baseUrl + '/' + generatedResult.shortUrl">{{baseUrl+"/"+generatedResult.shortUrl}}</a>
   </div>
 </div>

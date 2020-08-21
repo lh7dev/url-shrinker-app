@@ -14,6 +14,7 @@ export class ShrinkUrlComponent implements OnInit {
   form: FormGroup;
 
   generatedResult: UrlRelationship | null;
+  baseUrl;
 
   constructor(private srv: UrlShrinkerService, private fb: FormBuilder) {}
 
@@ -22,20 +23,22 @@ export class ShrinkUrlComponent implements OnInit {
       url: [
         '',
         [
-          Validators.required,
-          Validators.pattern(
-            '^(https?|ftp?|http?)://([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?'
-          ),
+          Validators.required
         ],
       ],
+      totalValidDays: [365]
     });
+
+    this.baseUrl = this.srv.baseUrl;
   }
 
   submitForm() {
     console.log('trace submit');
+    console.log(this.form.valid);
     if (this.form.valid) {
       this.srv.shrinkUrl(this.form.value).subscribe((result) => {
         if (result.success) {
+          console.log("success!!");
           this.form.reset();
           this.generatedResult = result.data;
         } else {

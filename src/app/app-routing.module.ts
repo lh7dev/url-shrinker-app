@@ -5,12 +5,13 @@ import { ShrinkUrlComponent } from './components/shrink-url/shrink-url.component
 import { ResolveShortUrlComponent } from './components/resolve-short-url/resolve-short-url.component';
 
 const routes: Routes = [
+  { path: '', component: ListViewComponent },
   { path: 'list', component: ListViewComponent },
   { path: 'shrink_url', component: ShrinkUrlComponent },
   { path: 'resolve_short_url', component: ResolveShortUrlComponent },
   {
     path: '',
-    redirectTo: 'list',
+    redirectTo: '',
     pathMatch: 'full',
   },
 ];
