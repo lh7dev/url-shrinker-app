@@ -33,7 +33,6 @@ export class ListViewComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.initPaginators();
   }
 
   refreshList(): void {

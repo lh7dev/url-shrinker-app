@@ -26,10 +26,12 @@ export class ShrinkUrlComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.pattern("^(https|ftp|http|ftps):\\/\\/([a-z\\d_]+\\.)?(([a-zA-Z\\d_]+)(\\.[a-zA-Z]{2,6}))(\\/[a-zA-Z\\d_\\%\\-=\\+]+)*(\\?)?([a-zA-Z\\d=_\\+\\%\\-&\\{\\}\\:]+)?")
+          Validators.pattern("^((https|ftp|http|ftps):\\/\\/((([a-z\\d_]+\\.)(([a-zA-Z\\d_]+)(\\.[a-zA-Z]{2,6})))|(([a-zA-Z\\d_]+)(\\.[a-zA-Z]{2,6}))))(\\/[a-zA-Z\\d_\\%\\-=\\+]+)*(\\?)?([a-zA-Z\\d=_\\+\\%\\-&\\{\\}\\:]+)?")
         ],
       ],
-      // ^(https|ftp|http|ftps):\/\/([a-z\d_]+\.)?(([a-zA-Z\d_]+)(\.[a-zA-Z]{2,6}))(\/[a-zA-Z\d_\%\-=\+]+)*(\?)?([a-zA-Z\d=_\+\%\-&\{\}\:]+)?
+      // ^((https|ftp|http|ftps):\/\/((([a-z\d_]+\.)(([a-zA-Z\d_]+)(\.[a-zA-Z]{2,6})))|(([a-zA-Z\d_]+)(\.[a-zA-Z]{2,6}))))(\/[a-zA-Z\d_\%\-=\+]+)*(\?)?([a-zA-Z\d=_\+\%\-&\{\}\:]+)?
+      // ^(https|ftp|http|ftps):\/\/(([a-z\d_]+\.)(([a-zA-Z\d_]+)(\.[a-zA-Z]{2,6}))|(([a-zA-Z\d_]+)(\.[a-zA-Z]{2,6})))(\/[a-zA-Z\d_\%\-=\+]+)*(\?)?([a-zA-Z\d=_\+\%\-&\{\}\:]+)?
+      // ^(https|ftp|http|ftps):\\/\\/([a-z\\d_]+\\.)?(([a-zA-Z\\d_]+)(\\.[a-zA-Z]{2,6}))+(\\/[a-zA-Z\\d_\\%\\-=\\+]+)*(\\?)?([a-zA-Z\\d=_\\+\\%\\-&\\{\\}\\:]+)?
       totalValidDays: [365]
     });
 
